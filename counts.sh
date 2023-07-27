@@ -1,11 +1,15 @@
 
 easy=$(ls -R | grep Easy -c)
-echo "easy $easy"
 medium=$(ls -R | grep Medium -c)
-echo "medium $medium"
 hard=$(ls -R | grep Hard -c)
-echo "hard $hard"
+total=$((easy + medium + hard)) 
+
+easy_percent=$(echo "scale=2 ; $easy / $total" | bc)
+medium_percent=$(echo "scale=2 ; $medium / $total" | bc)
+hard_percent=$(echo "scale=2 ; $hard / $total" | bc)
 
 
-echo "total $((easy + medium + hard))"
-
+echo "easy $easy $easy_percent"
+echo "medium $medium $medium_percent"
+echo "hard $hard $hard_percent"
+echo "total $total"
